@@ -2,12 +2,10 @@
 from keras.models import Sequential
 from keras.layers import Dense
 import numpy as np
+np.random.seed(653424)
 
-#np.random.seed(65424)
 # Initializing an identity matrix
 identity_matrix = np.identity(8)
-
-
 # ------------------------------------------
 # Step a.
 #    --> Creating and initializing a 8x3x8 neural network
@@ -27,8 +25,6 @@ model.compile(loss='categorical_crossentropy',
 # Step b.
 #    --> Training the network to learn the 8x8 identity matrix
 # ------------------------------------------
-
-# one_hot_labels = keras.utils.to_categorical(y_train, num_classes=8)
 # 10000 iterations
 print("Step b. Training the network to learn the 8x8 identity matrix...")
 for i in range(10000):
@@ -37,7 +33,7 @@ for i in range(10000):
 
 data = identity_matrix[np.random.choice(identity_matrix.shape[0], 100), :]
 # print(model.metrics_names)
-print("Created a model with the accuracy of {:.2%}".format(model.evaluate(data, data, batch_size=100)[1]))
+print("Trained a model with the accuracy of {:.2%}".format(model.evaluate(data, data, batch_size=100)[1]))
 
 
 # ------------------------------------------
@@ -47,13 +43,9 @@ print("Created a model with the accuracy of {:.2%}".format(model.evaluate(data, 
 # ------------------------------------------
 print("Step c. Prediction of the neural network for every row of "
       "the 8x8 identity matrix")
+# In the next few lines we can observe the lambda function 'row_identifier' being applyed to every row of
+# the identity matrix
 # The first row is identified with the number 1
-
-
-#row_identifier = lambda row: print(np.argmax(model.predict([row], batch_size=1))+1)
-#np.apply_along_axis(row_identifier, axis=1, arr=identity_matrix)
-
-#print(np.argmax(model.predict([row], batch_size=1))+1)
-
-print(model.predict(identity_matrix, batch_size=8))
-
+row_identifier = lambda row: print(np.argmax(model.predict(np.array([row]), batch_size=1))+1)
+np.apply_along_axis(row_identifier, axis=1, arr=identity_matrix)
+# The expected outcome is 1 2 3 4 5 6 7 8 (prediction for every row of the identity matrix)
