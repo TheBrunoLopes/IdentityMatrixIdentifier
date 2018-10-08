@@ -1,6 +1,7 @@
 # Imports for the objects used in the next steps
 from keras.models import Sequential
 from keras.layers import Dense
+import matplotlib.pyplot as plt
 import numpy as np
 
 np.random.seed(653424)
@@ -27,10 +28,13 @@ model.compile(loss='categorical_crossentropy',
 #    --> Training the network to learn the 8x8 identity matrix
 # ------------------------------------------
 # 10000 iterations
+
+history = np.empty((10000, 2))
 print("Step b. Training the network to learn the 8x8 identity matrix...")
 for i in range(10000):
     data = identity_matrix[np.random.choice(identity_matrix.shape[0], 32), :]
-    model.train_on_batch(data, data)
+    history[i] = model.train_on_batch(data, data)
+
 
 data = identity_matrix[np.random.choice(identity_matrix.shape[0], 100), :]
 # print(model.metrics_names)
