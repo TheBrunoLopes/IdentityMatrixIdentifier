@@ -10,7 +10,7 @@ The main.py file is a program that:
   c. Outputs the neural network prediction for every row of
     the 8x8 identity matrix
     
-![Figure 1](https://raw.githubusercontent.com/bioslikk/bioslikk/master/matplotlib.png)
+![Figure 1](https://github.com/bioslikk/IdentityMatrixIdentifier/blob/master/matplotlib.png?raw=true)
 
 
 ### Running main.py
