@@ -23,7 +23,7 @@ model.add(Dense(units=8, activation='softmax'))
 # and the nadam ( Nesterov Adam Optimizer ) talked about in http://www.cs.toronto.edu/~fritz/absps/momentum.pdf
 # provided the best results compared to other optimizers that I tried and are provided by Keras
 model.compile(loss='categorical_crossentropy',
-              optimizer='nadam',
+              optimizer='adam',
               metrics=['accuracy'])
 
 # ------------------------------------------
