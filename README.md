@@ -11,6 +11,7 @@ The main.py file is a program that:
     the 8x8 identity matrix
     
 
+### Running main.py
 I recommended that you first create a virtual environment (python3.6 venv) to run this project.
 
 Then you can install the requirements and run the script
@@ -19,9 +20,15 @@ pip install -r requirements.txt
 python IdentityMatrixIdentifier/main.py
 ```
 
+### Run in docker
+You could also run this project in docker.
+However, you will not be able to see the pretty matplotlib graph by running it this way.
+```bash
+docker run bioslikk/identity_matrix_identifier
+```
 ##### Troubleshoot:
 
-If you get the error "module not found error: no module named 'tkinter'" 
+If you get the error "matplotlib module not found error: no module named 'tkinter'" 
 
 Run the following:
 ```bash
